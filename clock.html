@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        .demo {
+            color: greenyellow;
+            font-size: 48px;
+            /* Optional: Makes the clock larger */
+            text-align: center;
+            /* Optional: Centers the clock */
+            /* margin-top: 20%; */
+            /* Optional: Centers the clock vertically */
+        }
+        
+        body {
+            background-color: black;
+            margin-top: 20%;
+            margin-bottom: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo" class="demo"></div>
+    <script type="text/javascript">
+        function ShowTime() {
+            var date = new Date(); // Corrected 'date' to 'Date'
+            let h = date.getHours(); // Corrected 'gethours' to 'getHours'
+            let m = date.getMinutes(); // Corrected 'getminutes' to 'getMinutes'
+            let s = date.getSeconds(); // Corrected 'getseconds' to 'getSeconds'
+            let session = "AM";
+            if (h == 0) {
+                h = 12;
+            }
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+            // Format time to ensure two digits
+            h = h < 10 ? '0' + h : h;
+            m = m < 10 ? '0' + m : m;
+            s = s < 10 ? '0' + s : s;
+
+
+            // Update the inner HTML of the demo div
+            document.getElementById("demo").innerHTML = h + ":" + m + ":" + s + " " + session;
+        }
+
+        // function Demo() {
+        //     if (m == 24) {
+        //         alert("It's high time go to Sleep");
+        //     }
+        // }
+        // Call updateClock every second
+        setTimeout(ShowTime, 1000);
+        ShowTime(); // Initial call to display clock immediately
+
+        //     function showTime() {
+        //         document.getElementById('demo').innerHTML = new Date().toUTCString();
+        //     }
+        //     showTime();
+        //     setInterval(function() {
+        //         showTime();
+        //     }, 1000);
+        //
+    </script>
+</body>
+
+</html>
